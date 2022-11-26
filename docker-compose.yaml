@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  e-sports-data:
+    container_name: e-sports-data
+    build:
+      context: "./"
+      target: dev
+    volumes:
+      - ./src:/app/src
+      - /app/node_modules
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      - PORT=${PORT}
