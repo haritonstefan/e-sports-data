@@ -1,7 +1,4 @@
-import { join } from 'path';
 import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 import { PublicResolver } from './public.resolver.js';
 import {
@@ -22,14 +19,7 @@ import {
 import { FeaturedService } from './services/featured.service';
 
 @Module({
-  imports: [
-    PandaScoreModule,
-    WikipediaModule,
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-    }),
-  ],
+  imports: [PandaScoreModule, WikipediaModule],
   providers: [
     PlayerService,
     TeamService,
@@ -42,5 +32,7 @@ import { FeaturedService } from './services/featured.service';
     TeamResolver,
     VideogameResolver,
   ],
+
+  exports: [PlayerService, TeamService, VideogameService],
 })
 export class PublicModule {}

@@ -12,8 +12,8 @@ export class VideogameService {
     return pandaScoreVideogameToVideogame(videogame);
   }
 
-  public async getVideogames(limit: number, page: number) {
-    const videogames = await this.pandaScore.getVideogames(limit, page);
+  public async getVideogames(limit: number, page: number, params: any = {}) {
+    const videogames = await this.pandaScore.getVideogames(limit, page, params);
 
     return videogames.map(pandaScoreVideogameToVideogame);
   }

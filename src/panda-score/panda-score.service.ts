@@ -60,11 +60,12 @@ export class PandaScoreService {
   public async getVideogames(
     limit: number,
     page: number,
+    params: any = {},
   ): Promise<IVideogame[]> {
     return this.requestPromise({
       method: 'get',
       url: 'videogames',
-      params: { page, per_page: limit },
+      params: { ...params, page, per_page: limit },
     });
   }
 }

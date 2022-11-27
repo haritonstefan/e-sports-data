@@ -1,5 +1,6 @@
 import {
   Args,
+  Context,
   Int,
   Parent,
   Query,
@@ -7,15 +8,12 @@ import {
   Resolver,
 } from '@nestjs/graphql';
 import { Player, Team, Videogame } from '../models';
-import { PlayerService, TeamService, VideogameService } from '../services';
+import { TeamService } from '../services';
+import { IHaveLoaders } from '../dataloaders/i-have-loaders';
 
 @Resolver(() => Team)
 export class TeamResolver {
-  constructor(
-    private readonly teamService: TeamService,
-    private readonly playerService: PlayerService,
-    private readonly videogameService: VideogameService,
-  ) {}
+  constructor(private readonly teamService: TeamService) {}
 
   @Query(() => Team, {
     name: 'team',
@@ -37,16 +35,19 @@ export class TeamResolver {
   }
 
   @ResolveField(() => [Player], { name: 'players' })
-  public async players(@Parent() team: Team) {
+  public async players(@Parent() team: Team, @Context() context: IHaveLoaders) {
     if (!team.players) return null;
 
-    return this.playerService.getPlayersByIds(team.players.map((p) => p.id));
+    return context.playerLoader.loadMany(team.players.map((p) => p.id));
   }
 
   @ResolveField(() => Videogame, { name: 'videogame' })
-  public async videogame(@Parent() team: Team) {
+  public async videogame(
+    @Parent() team: Team,
+    @Context() context: IHaveLoaders,
+  ) {
     if (!team.videogame) return null;
 
-    return this.videogameService.getVideogame(team.videogame.id);
+    return context.videogameLoader.load(team.videogame.id);
   }
 }
