@@ -12,8 +12,12 @@ export class TeamService {
     return pandaScoreTeamToTeam(team);
   }
 
-  public async getTeams(limit: number, page: number): Promise<Team[]> {
-    const teams = await this.pandaScore.getTeams(limit, page);
+  public async getTeams(
+    limit: number,
+    page: number,
+    params: any = {},
+  ): Promise<Team[]> {
+    const teams = await this.pandaScore.getTeams(limit, page, params);
     return teams.map(pandaScoreTeamToTeam);
   }
 }

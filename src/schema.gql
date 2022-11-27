@@ -15,18 +15,6 @@ type Videogame {
   description: Article
 }
 
-"""Team"""
-type Team {
-  id: ID!
-  slug: String
-  acronym: String
-  name: String
-  location: String
-  image: String
-  players: [Player!]
-  videogame: Videogame
-}
-
 """Player"""
 type Player {
   id: ID!
@@ -42,7 +30,26 @@ type Player {
   image: String
 }
 
+"""Team"""
+type Team {
+  id: ID!
+  slug: String!
+  acronym: String
+  name: String
+  location: String
+  image: String
+  players: [Player!]
+  videogame: Videogame
+}
+
+type Featured {
+  participants: [Participant!]!
+}
+
+union Participant = Player | Team
+
 type Query {
+  featured: Featured!
   player(id: Float!): Player!
   players(limit: Int, page: Int): [Player!]!
   team(id: Float!): Team!

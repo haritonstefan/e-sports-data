@@ -17,11 +17,15 @@ export class PandaScoreService {
     return this.requestPromise({ method: 'get', url: `player/${id}` });
   }
 
-  public async getPlayers(perPage: number, page: number): Promise<IPlayer[]> {
+  public async getPlayers(
+    perPage: number,
+    page: number,
+    params: Record<string, any>,
+  ): Promise<IPlayer[]> {
     return this.requestPromise({
       method: 'get',
       url: 'players',
-      params: { page, per_page: perPage },
+      params: { ...params, page, per_page: perPage },
     });
   }
 
@@ -37,11 +41,15 @@ export class PandaScoreService {
     return this.requestPromise({ method: 'get', url: `teams/${id}` });
   }
 
-  public async getTeams(perPage: number, page: number): Promise<ITeam[]> {
+  public async getTeams(
+    perPage: number,
+    page: number,
+    params: any,
+  ): Promise<ITeam[]> {
     return this.requestPromise({
       method: 'get',
       url: 'teams',
-      params: { page, per_page: perPage },
+      params: { ...params, page, per_page: perPage },
     });
   }
 

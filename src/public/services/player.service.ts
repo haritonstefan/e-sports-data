@@ -12,8 +12,12 @@ export class PlayerService {
     return pandaScorePlayerToPlayer(player);
   }
 
-  public async getPlayers(limit: number, page: number): Promise<Player[]> {
-    const players = await this.pandaScore.getPlayers(limit, page);
+  public async getPlayers(
+    limit: number,
+    page: number,
+    params: Record<string, string> = {},
+  ): Promise<Player[]> {
+    const players = await this.pandaScore.getPlayers(limit, page, params);
 
     return players.map(pandaScorePlayerToPlayer);
   }

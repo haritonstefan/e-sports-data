@@ -7,8 +7,8 @@ export class Team {
   @Field(() => ID)
   id: number;
 
-  @Field({ nullable: true })
-  slug: string;
+  @Field({ nullable: false })
+  slug!: string;
 
   @Field({ nullable: true })
   acronym?: string;

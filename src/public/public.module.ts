@@ -4,17 +4,22 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 import { PublicResolver } from './public.resolver.js';
-import { PlayerResolver } from './resolvers/player.resolver';
-import { TeamResolver } from './resolvers/team.resolver';
-import { VideogameResolver } from './resolvers/videogame.resolver';
+import {
+  FeaturedResolver,
+  PlayerResolver,
+  TeamResolver,
+  VideogameResolver,
+} from './resolvers';
 import { PandaScoreModule } from '../panda-score';
 import { WikipediaModule } from '../wikipedia';
+
 import {
   PlayerService,
   TeamService,
   VideogameService,
   WikipediaArticleService,
 } from './services';
+import { FeaturedService } from './services/featured.service';
 
 @Module({
   imports: [
@@ -30,6 +35,8 @@ import {
     TeamService,
     VideogameService,
     WikipediaArticleService,
+    FeaturedService,
+    FeaturedResolver,
     PublicResolver,
     PlayerResolver,
     TeamResolver,
