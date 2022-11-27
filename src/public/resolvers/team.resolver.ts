@@ -17,12 +17,18 @@ export class TeamResolver {
     private readonly videogameService: VideogameService,
   ) {}
 
-  @Query(() => Team, { name: 'team' })
+  @Query(() => Team, {
+    name: 'team',
+    description: 'Will get the requested team',
+  })
   public async team(@Args('id') id: number) {
     return this.teamService.getTeam(id);
   }
 
-  @Query(() => [Team], { name: 'teams' })
+  @Query(() => [Team], {
+    name: 'teams',
+    description: 'Will retrieve a list of teams',
+  })
   public async teams(
     @Args('limit', { nullable: true, type: () => Int }) limit = 50,
     @Args('page', { nullable: true, type: () => Int }) page = 1,

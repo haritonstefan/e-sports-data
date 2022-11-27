@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PlayerService } from './player.service';
 import { TeamService } from './team.service';
-import { Featured } from '../models/featured';
+import { Featured } from '../models';
 import { listShuffle } from '../helpers';
 
 @Injectable()

@@ -17,12 +17,15 @@ export class PlayerResolver {
     private readonly videogameService: VideogameService,
   ) {}
 
-  @Query(() => Player)
+  @Query(() => Player, { description: 'Will return a player by id' })
   async player(@Args('id') id: number): Promise<Player> {
     return this.playerService.getPlayer(id);
   }
 
-  @Query(() => [Player])
+  @Query(() => [Player], {
+    description:
+      'Will return a list of players, with respect to the pagination params',
+  })
   async players(
     @Args('limit', { nullable: true, type: () => Int }) limit = 50,
     @Args('page', { nullable: true, type: () => Int }) page = 1,

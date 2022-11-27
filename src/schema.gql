@@ -3,57 +3,120 @@
 # ------------------------------------------------------
 
 type Article {
+  """The title of the game."""
   title: String!
+
+  """An excerpt from the games, wikipedia page"""
   text: String!
 }
 
 """Videogame"""
 type Videogame {
+  """The unique identifier of the videogame"""
   id: ID!
-  slug: String!
-  title: String!
-  description: Article
-}
 
-"""Player"""
-type Player {
-  id: ID!
+  """A string value uniquely identifying the videogame"""
   slug: String!
-  birthdayYear: Int
-  birthday: String
-  team: Team
-  videogame: Videogame
-  firstName: String!
-  lastName: String!
-  name: String!
-  nationality: String!
-  image: String
+
+  """The title of the videogame"""
+  title: String!
+
+  """More information about the game"""
+  description: Article
 }
 
 """Team"""
 type Team {
+  """The unique identifier of the team"""
   id: ID!
+
+  """A string value uniquely identifying the team"""
   slug: String!
+
+  """An acronym for the team"""
   acronym: String
+
+  """The team's name"""
   name: String
+
+  """The team's location"""
   location: String
+
+  """An url to the teams logo"""
   image: String
+
+  """The players that ar in the team"""
   players: [Player!]
+
+  """The game in which the team competes"""
   videogame: Videogame
 }
 
+"""Player"""
+type Player {
+  """The unique identifier of the player"""
+  id: ID!
+
+  """A string value uniquely identifying a player"""
+  slug: String!
+
+  """Player's birthday year computed from the birthday"""
+  birthdayYear: Int
+
+  """String date representation of the format YYYY-MM-dd"""
+  birthday: String
+
+  """The team in which the player competes"""
+  team: Team
+
+  """The videogame in which the player plays."""
+  videogame: Videogame
+
+  """Player's first name"""
+  firstName: String!
+
+  """Player's last name"""
+  lastName: String!
+
+  """Player's nickname"""
+  name: String!
+
+  """Player's nationality"""
+  nationality: String!
+
+  """An url to the player's avatar"""
+  image: String
+}
+
 type Featured {
+  """A shuffled list of recently updated players and teams"""
   participants: [Participant!]!
 }
 
+"""Could be either a Player or a Team"""
 union Participant = Player | Team
 
 type Query {
+  """
+  Will retrieve a shuffled list of players and teams which were last modified
+  """
   featured: Featured!
+
+  """Will return a player by id"""
   player(id: Float!): Player!
+
+  """Will return a list of players, with respect to the pagination params"""
   players(limit: Int, page: Int): [Player!]!
+
+  """Will get the requested team"""
   team(id: Float!): Team!
+
+  """Will retrieve a list of teams"""
   teams(limit: Int, page: Int): [Team!]!
+
+  """Will retrieve the game by id."""
   videogame(id: Float!): Videogame!
+
+  """Will retrieve a list of videogames"""
   videogames(limit: Int, page: Int): [Videogame!]!
 }

@@ -16,12 +16,18 @@ export class VideogameResolver {
     private readonly wikipediaArticleService: WikipediaArticleService,
   ) {}
 
-  @Query(() => Videogame)
+  @Query(() => Videogame, {
+    name: 'videogame',
+    description: 'Will retrieve the game by id.',
+  })
   public async videogame(@Args('id') id: number) {
     return this.videogameService.getVideogame(id);
   }
 
-  @Query(() => [Videogame])
+  @Query(() => [Videogame], {
+    name: 'videogames',
+    description: 'Will retrieve a list of videogames',
+  })
   public async videogames(
     @Args('limit', { nullable: true, type: () => Int }) limit = 50,
     @Args('page', { nullable: true, type: () => Int }) page = 1,

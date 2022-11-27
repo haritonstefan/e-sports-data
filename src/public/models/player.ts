@@ -4,36 +4,48 @@ import { Videogame } from './videogame';
 
 @ObjectType({ description: 'Player' })
 export class Player {
-  @Field(() => ID)
+  @Field(() => ID, { description: 'The unique identifier of the player' })
   id!: number;
 
-  @Field()
+  @Field({ description: 'A string value uniquely identifying a player' })
   slug!: string;
 
-  @Field(() => Int, { nullable: true })
+  @Field(() => Int, {
+    description: "Player's birthday year computed from the birthday",
+    nullable: true,
+  })
   birthdayYear?: number;
 
-  @Field({ nullable: true })
+  @Field({
+    description: 'String date representation of the format YYYY-MM-dd',
+    nullable: true,
+  })
   birthday?: string;
 
-  @Field(() => Team, { nullable: true })
+  @Field(() => Team, {
+    description: 'The team in which the player competes',
+    nullable: true,
+  })
   team?: Team;
 
-  @Field(() => Videogame, { nullable: true })
+  @Field(() => Videogame, {
+    description: 'The videogame in which the player plays.',
+    nullable: true,
+  })
   videogame?: Videogame;
 
-  @Field()
+  @Field({ description: "Player's first name" })
   firstName: string;
 
-  @Field()
+  @Field({ description: "Player's last name" })
   lastName: string;
 
-  @Field()
+  @Field({ description: "Player's nickname" })
   name: string;
 
-  @Field()
+  @Field({ description: "Player's nationality" })
   nationality: string;
 
-  @Field({ nullable: true })
+  @Field({ description: "An url to the player's avatar", nullable: true })
   image: string;
 }
