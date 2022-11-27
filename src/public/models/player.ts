@@ -1,6 +1,6 @@
 import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
-import { Team } from '../team/team';
-import { Videogame } from '../videogame/videogame';
+import { Team } from './team';
+import { Videogame } from './videogame';
 
 @ObjectType({ description: 'Player' })
 export class Player {

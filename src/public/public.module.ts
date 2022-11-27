@@ -4,11 +4,17 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 import { PublicResolver } from './public.resolver.js';
-import { PlayerResolver } from './player/player.resolver.js';
-import { TeamResolver } from './team/team.resolver.js';
-import { VideogameResolver } from './videogame/videogame.resolver.js';
-import { PandaScoreModule } from '../panda-score/panda-score.module';
-import { WikipediaModule } from '../wikipedia/wikipedia.module';
+import { PlayerResolver } from './resolvers/player.resolver';
+import { TeamResolver } from './resolvers/team.resolver';
+import { VideogameResolver } from './resolvers/videogame.resolver';
+import { PandaScoreModule } from '../panda-score';
+import { WikipediaModule } from '../wikipedia';
+import {
+  PlayerService,
+  TeamService,
+  VideogameService,
+  WikipediaArticleService,
+} from './services';
 
 @Module({
   imports: [
@@ -19,6 +25,15 @@ import { WikipediaModule } from '../wikipedia/wikipedia.module';
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
   ],
-  providers: [PublicResolver, PlayerResolver, TeamResolver, VideogameResolver],
+  providers: [
+    PlayerService,
+    TeamService,
+    VideogameService,
+    WikipediaArticleService,
+    PublicResolver,
+    PlayerResolver,
+    TeamResolver,
+    VideogameResolver,
+  ],
 })
 export class PublicModule {}

@@ -1,7 +1,7 @@
 import { IVideogame } from '../../panda-score/interfaces';
-import { Videogame } from '../videogame/videogame';
+import { Videogame } from '../models';
 
-export default function pandaScoreVideogameToVideogame(
+export function pandaScoreVideogameToVideogame(
   videogame: IVideogame,
 ): Videogame {
   return {

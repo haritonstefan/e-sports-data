@@ -1,9 +1,9 @@
 import { IPlayer } from '../../panda-score/interfaces';
-import { Player } from '../player/player';
-import pandaScoreTeamToTeam from './panda-score-team-to-team';
-import pandaScoreVideogameToVideogame from './panda-score-videogame-to-videogame';
+import { Player } from '../models';
+import { pandaScoreTeamToTeam } from './panda-score-team-to-team';
+import { pandaScoreVideogameToVideogame } from './panda-score-videogame-to-videogame';
 
-export default function pandaScorePlayerToPlayer(player: IPlayer): Player {
+export function pandaScorePlayerToPlayer(player: IPlayer): Player {
   const gqlPlayer: Player = {
     id: player.id,
     birthday: player.birthday,

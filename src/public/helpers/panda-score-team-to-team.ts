@@ -1,9 +1,9 @@
 import { ITeam } from '../../panda-score/interfaces';
-import { Team } from '../team/team';
-import pandaScorePlayerToPlayer from './panda-score-player-to-player';
-import pandaScoreVideogameToVideogame from './panda-score-videogame-to-videogame';
+import { Team } from '../models';
+import { pandaScorePlayerToPlayer } from './panda-score-player-to-player';
+import { pandaScoreVideogameToVideogame } from './panda-score-videogame-to-videogame';
 
-export default function pandaScoreTeamToTeam(team: ITeam): Team {
+export function pandaScoreTeamToTeam(team: ITeam): Team {
   const gqlTeam: Team = {
     id: team.id,
     slug: team.slug,
