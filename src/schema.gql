@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Article {
+  title: String!
+  text: String!
+}
+
+"""Videogame"""
+type Videogame {
+  id: ID!
+  slug: String!
+  title: String!
+  description: Article
+}
+
+"""Team"""
+type Team {
+  id: ID!
+  slug: String
+  acronym: String
+  name: String
+  location: String
+  image: String
+  players: [Player!]
+  videogame: Videogame
+}
+
+"""Player"""
+type Player {
+  id: ID!
+  slug: String!
+  birthdayYear: Int
+  birthday: String
+  team: Team
+  videogame: Videogame
+  firstName: String!
+  lastName: String!
+  name: String!
+  nationality: String!
+  image: String
+}
+
+type Query {
+  player(id: Float!): Player!
+  players(limit: Int, page: Int): [Player!]!
+  team(id: Float!): Team!
+  teams(limit: Int, page: Int): [Team!]!
+  videogame(id: Float!): Videogame!
+  videogames(limit: Int, page: Int): [Videogame!]!
+}
