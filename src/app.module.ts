@@ -10,7 +10,7 @@ import {
   TeamService,
   VideogameService,
 } from './public/services';
-import { GraphqlOptionsFactory } from './public/graphql-options.factory';
+import { GraphqlOptionsFactory } from './graphql-options.factory';
 
 @Module({
   imports: [

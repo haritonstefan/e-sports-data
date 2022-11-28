@@ -37,6 +37,7 @@ export class VideogameResolver {
 
   @ResolveField()
   public async description(@Parent() videogame: Videogame): Promise<Article> {
+    // TODO use a dataloader
     return this.wikipediaArticleService.getArticle(videogame.title);
   }
 }

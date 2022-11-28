@@ -6,7 +6,7 @@ import { INestApplication } from '@nestjs/common';
 
 import { AppModule } from '../src/app.module';
 
-describe('GraphQL Resolver (e2e)', () => {
+describe('GraphQL Teams Resolver (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {

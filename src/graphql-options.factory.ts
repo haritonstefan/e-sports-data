@@ -5,8 +5,12 @@ import {
   createPlayerLoader,
   createTeamLoader,
   createVideogameLoader,
-} from './dataloaders';
-import { PlayerService, TeamService, VideogameService } from './services';
+} from './public/dataloaders';
+import {
+  PlayerService,
+  TeamService,
+  VideogameService,
+} from './public/services';
 import { ConfigService } from '@nestjs/config';
 
 export function GraphqlOptionsFactory(
