@@ -4,7 +4,7 @@ services:
     container_name: e-sports-data
     build:
       context: "./"
-      target: dev
+      target: prod
     volumes:
       - ./src:/app/src
       - /app/node_modules

@@ -1,5 +1,5 @@
-import { IVideogame } from './IVideogame';
-import { ITeam } from './ITeam';
+import { IVideogame } from './i-videogame';
+import { ITeam } from './i-team';
 
 export interface IPlayer {
   id: number;

@@ -1,8 +1,4 @@
-export interface IWikipediaArticle {
-  pageid: number;
-  title: string;
-  extract: string;
-}
+import { IWikipediaArticle } from './i-wikipedia-article';
 
 export interface IWikipediaDataResponse {
   query: {

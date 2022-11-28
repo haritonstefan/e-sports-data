@@ -1,3 +1,3 @@
-export * from './IPlayer';
-export * from './ITeam';
-export * from './IVideogame';
+export * from './i-player';
+export * from './i-team';
+export * from './i-videogame';

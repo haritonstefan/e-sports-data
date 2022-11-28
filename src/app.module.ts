@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PandaScoreModule } from './panda-score';
 import { WikipediaModule } from './wikipedia';
 import { PublicModule } from './public/public.module';
@@ -18,7 +18,7 @@ import { GraphqlOptionsFactory } from './public/graphql-options.factory';
     GraphQLModule.forRootAsync({
       imports: [PublicModule],
       driver: ApolloDriver,
-      inject: [PlayerService, TeamService, VideogameService],
+      inject: [ConfigService, PlayerService, TeamService, VideogameService],
       useFactory: GraphqlOptionsFactory,
     }),
     PandaScoreModule,

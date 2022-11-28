@@ -1,9 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import {
-  IWikipediaArticle,
-  IWikipediaDataResponse,
-} from './IWikipediaDataResponse';
+import { IWikipediaArticle, IWikipediaDataResponse } from './interfaces';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
