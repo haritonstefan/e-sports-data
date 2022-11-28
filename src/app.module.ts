@@ -1,11 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-
-import { AppController } from './app.controller.js';
-import { AppService } from './app.service.js';
 import { PandaScoreModule } from './panda-score';
 import { WikipediaModule } from './wikipedia';
-import { PublicModule } from './public/public.module.js';
+import { PublicModule } from './public/public.module';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
 import {
@@ -28,7 +25,5 @@ import { GraphqlOptionsFactory } from './public/graphql-options.factory';
     WikipediaModule,
     PublicModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

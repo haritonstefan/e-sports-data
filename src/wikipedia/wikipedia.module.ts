@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { WikipediaService } from './wikipedia.service.js';
+import { WikipediaService } from './wikipedia.service';
 import { HttpModule } from '@nestjs/axios';
 import { HttpModuleSettingsFactory } from './http-module-settings.factory';
 

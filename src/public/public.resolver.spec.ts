@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PublicResolver } from './public.resolver.js';
+import { PublicResolver } from './public.resolver';
 
 describe('PublicResolver', () => {
   let resolver: PublicResolver;

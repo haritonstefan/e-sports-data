@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { PublicResolver } from './public.resolver.js';
+import { PublicResolver } from './public.resolver';
 import {
   FeaturedResolver,
   PlayerResolver,
