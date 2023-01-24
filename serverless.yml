@@ -1,0 +1,26 @@
+org: haritonstefan
+app: e-sports-data
+service: e-sports-data
+frameworkVersion: '3'
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+custom:
+  serverlessPluginTypescript:
+    tsConfigFileLocation: './tsconfig.sls.json'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  profile: personal
+
+functions:
+  gql:
+    handler: src/lambda.gqlHandler
+    events:
+      - httpApi:
+          path: '/{proxy+}'
+          cors: true
+          method: ANY
